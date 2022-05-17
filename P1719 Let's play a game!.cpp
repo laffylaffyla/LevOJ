@@ -29,3 +29,37 @@ n 个整数，A1,A2,A3,...,An
 样例输出 2
 
 4 */
+#include <iostream>
+#include <algorithm>
+#define MAXN 300002
+
+using namespace std;
+
+int n, k, a;
+int ans = 0, flag = 0, t = 1, m = 0;
+int arr[MAXN];
+
+int main()
+{
+    cin >> n >> k;
+    for (int i = 1; i <= n; i++)
+    {
+        cin >> a;
+        if (i > t)
+        {
+            t = t * 2;
+        }
+        if (a == k)
+        {
+            if (t > i)
+            {
+                t = t / 2;
+            }
+            flag++;
+            arr[flag] = i - t - flag + 1;
+            m = m > arr[flag] ? m : arr[flag];
+        }
+    }
+    cout << flag + m << endl;
+    return 0;
+}
