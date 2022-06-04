@@ -83,7 +83,23 @@ void search(int n, int cnt)
 
 int main()
 {
-    while (cin >> n >> m)
+    cin >> n >> m;
+    ans = 0;
+    int a, b;
+    for (int i = 1; i <= m; i++)
+    {
+        cin >> a >> b;
+        ani[b].push_back(a);
+    }
+    for (int i = 1; i <= n; i++)
+    {
+        if (!ani[i].empty())
+        {
+            search(i, 0);
+        }
+    }
+    cout << ans << endl;
+    /* while (cin >> n >> m)
     {
         ans = 0;
         int a, b;
@@ -104,6 +120,6 @@ int main()
         {
             ani[i].clear();
         }
-    }
+    } */
     return 0;
 }
