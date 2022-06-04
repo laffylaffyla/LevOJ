@@ -25,7 +25,6 @@ n≤10^5 ，opt∈{1,2}，1≤x≤1000，保证输入数据随机。
 
 样例输入
 
-Copy to Clipboard
 9
 1 5
 2 5
@@ -38,7 +37,6 @@ Copy to Clipboard
 2 11
 样例输出
 
-Copy to Clipboard
 
 
 1
