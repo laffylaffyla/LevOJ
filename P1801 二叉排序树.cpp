@@ -69,3 +69,83 @@ n≤10^5 ，opt∈{1,2}，1≤x≤1000，保证输入数据随机。
 输入 2 10 ，路径为 -> ，然后输出个数 1。
 
 输入 2 11 ，路径为 ->-> ，然后输出个数 0。 */
+
+#include <iostream>
+#include <cstdio>
+#include <cstdlib>
+
+using namespace std;
+
+int n, opt, x;
+int cnt[1002] = {0};
+
+typedef struct BSTNode
+{
+    int key;
+    int data;
+    BSTNode *left, *right;
+    BSTNode() = default;
+    BSTNode(int k) : key(k), data(0), left(NULL), right(NULL) {}
+} BSTree;
+
+BSTree *SearchBST(BSTree *rt, int k)
+{
+    if (rt == NULL || k == rt->key)
+    {
+        return rt;
+    }
+    if (k < rt->key)
+    {
+        cout << "<-";
+        return SearchBST(rt->left, k);
+    }
+    else
+    {
+        cout << "->";
+        return SearchBST(rt->right, k);
+    }
+}
+
+bool InsertBST(BSTree *&rt, int k)
+{
+    if (rt == NULL)
+    {
+        rt = new BSTNode(k);
+        return true;
+    }
+    if (k == rt->key)
+        return false;
+    if (k < rt->key)
+    {
+        cout << "<-";
+        return InsertBST(rt->left, k);
+    }
+    else
+    {
+        cout << "->";
+        return InsertBST(rt->right, k);
+    }
+}
+
+int main()
+{
+    BSTree *rt = NULL;
+    cin >> n;
+    while (n--)
+    {
+        cin >> opt >> x;
+        if (opt == 1)
+        {
+            InsertBST(rt, x);
+            cout << endl;
+            cnt[x]++;
+        }
+        if (opt == 2)
+        {
+            SearchBST(rt, x);
+            cout << endl;
+            cout << cnt[x] << endl;
+        }
+    }
+    return 0;
+}
