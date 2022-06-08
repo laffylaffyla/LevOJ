@@ -22,35 +22,37 @@
 7424613
 */
 
-//PJJ亲测代码
+// PJJ亲测代码
 
-#include<iostream>
-#include<string>
+#include <iostream>
+#include <string>
 using namespace std;
-void Sort(string *s,int n)
+void Sort(string *s, int n)
 {
-	for(int i=0;i<n-1;i++)
-	for(int j=0;j<n-i-1;j++)
-	{
-		if(s[j]<s[j+1])
+	for (int i = 0; i < n - 1; i++)
+		for (int j = 0; j < n - i - 1; j++)
 		{
-			string t;
-			t=s[j];
-			s[j]=s[j+1];
-			s[j+1]=t;
+			if (s[j] < s[j + 1])
+			{
+				string t;
+				t = s[j];
+				s[j] = s[j + 1];
+				s[j + 1] = t;
+			}
 		}
-	}
 }
 int main()
 {
 	int n;
-	while(cin>>n)
+	while (cin >> n)
 	{
-		string *num=new string[n];
-		for(int i=0;i<n;i++) cin>>num[i];
-		Sort(num,n);
-		for(int i=0;i<n;i++) cout<<num[i];
-		cout<<endl;
+		string *num = new string[n];
+		for (int i = 0; i < n; i++)
+			cin >> num[i];
+		Sort(num, n);
+		for (int i = 0; i < n; i++)
+			cout << num[i];
+		cout << endl;
 	}
 	return 0;
 }
