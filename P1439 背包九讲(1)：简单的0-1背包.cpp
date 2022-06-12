@@ -45,18 +45,18 @@ int main()
     int v, n;
     while (cin >> v >> n)
     {
-        int *weight = new int[n + 2];
-        int *value = new int[n + 2];
-        int *totalValue = new int[n + 2];
+        int *w = new int[n + 2];
+        int *vi = new int[n + 2];
+        int *dp = new int[n + 2];
         for (int i = 1; i <= n; i++)
-            cin >> weight[i] >> value[i];
+            cin >> w[i] >> vi[i];
         for (int i = 1; i <= n; i++)
-            for (int j = v; j >= weight[i]; j--)
-                totalValue[j] = max(totalValue[j], totalValue[j - weight[i]] + value[i]);
-        cout << totalValue[v] << endl;
-        delete[] weight;
-        delete[] value;
-        delete[] totalValue;
+            for (int j = v; j >= w[i]; j--)
+                dp[j] = max(dp[j], dp[j - w[i]] + vi[i]);
+        cout << dp[v] << endl;
+        delete[] w;
+        delete[] vi;
+        delete[] dp;
     }
     return 0;
 }
