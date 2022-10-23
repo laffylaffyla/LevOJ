@@ -9,7 +9,7 @@ int main()
 	while (scanf("%d", &m) != EOF)
 	{
 		int i;
-		for (i = m; i > 0; i--)
+		for (i = m-2; i > 0; i--)//不得超过m
 		{
 			if (prime_number(i) == 1 && prime_number(i + 2) == 1)
 			{
